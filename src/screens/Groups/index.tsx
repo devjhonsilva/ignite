@@ -1,10 +1,21 @@
+import { Header } from '@components/Header';
+import { Highlight } from '@components/Highlight';
 import {Container, Text} from './styles';
+import { GroupCard } from '@components/GroupCard';
 
 export function Groups() {
   return (
     <Container>
-      <Text>Groups</Text>
+      <Header />
 
+      <Highlight
+        title="Turmas"
+        subtitle="jogue com a sua turma!"
+      />
+
+      <GroupCard
+        title="Galera do ignite"
+      />
     </Container>
   );
 }
