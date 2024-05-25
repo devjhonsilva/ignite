@@ -1,9 +1,16 @@
+import React, { useState } from 'react';
+import { FlatList } from 'react-native';
 import { Header } from '@components/Header';
 import { Highlight } from '@components/Highlight';
-import {Container, Text} from './styles';
+import { Container, Text } from './styles';
 import { GroupCard } from '@components/GroupCard';
+import { ListEmpty } from '@components/ListEmpty';
+import { Button } from '@components/Button';
 
 export function Groups() {
+  const [groups, setGroups] = useState<string[]>([]);
+
+
   return (
     <Container>
       <Header />
@@ -13,9 +20,20 @@ export function Groups() {
         subtitle="jogue com a sua turma!"
       />
 
-      <GroupCard
-        title="Galera do ignite"
+      <FlatList
+        data={groups}
+        keyExtractor={item => item}
+        renderItem={({ item }) => (<GroupCard title={item} />)}
+        contentContainerStyle={groups.length === 0 && { flex: 1 }}
+        ListEmptyComponent={() => (<ListEmpty
+          message="Cadastre a primeira turma!" />)}
       />
+
+      <Button
+        title="Criar nova turma"
+        type="PRIMARY"
+      />
+
     </Container>
   );
 }

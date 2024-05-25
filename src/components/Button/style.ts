@@ -1,6 +1,5 @@
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
-import { Entypo } from "@expo/vector-icons";
 
 interface Theme {
   COLORS: {
@@ -32,29 +31,26 @@ interface Theme {
   };
 }
 
-export const Container = styled(TouchableOpacity).attrs(({ theme }) => ({}))`
-  width: 100%;
-  height: 90px;
+export type ButtonTypeStyledProps = "PRIMARY" | "SECONDARY";
 
-  background-color: ${({ theme }) => theme.COLORS.GRAY_500};
+type Props = {
+  type: ButtonTypeStyledProps;
+};
+export const Container = styled(TouchableOpacity)<Props>`
+  flex: 1;
+  min-height: 56px;
+  max-height: 56px;
+
+  background-color: ${({ theme, type }) =>
+    type === "PRIMARY" ? theme.COLORS.GREEN_700 : theme.COLORS.RED_DARK};
 
   border-radius: 6px;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  padding: 24px;
-  margin-bottom: 12px;
 `;
 
-export const Title = styled.Text<{ theme: Theme }>`
+export const Title = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD};
-  color: ${({ theme }) => theme.COLORS.GRAY_200};
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
-`;
-
-export const Icon = styled(Entypo).attrs(({ theme }) => ({
-  name: "users",
-  size: 32,
-  color: theme.COLORS.GREEN_700,
-}))`
-  margin-right: 20px;
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `;

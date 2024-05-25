@@ -1,4 +1,3 @@
-import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { Entypo } from "@expo/vector-icons";
 
@@ -32,29 +31,21 @@ interface Theme {
   };
 }
 
-export const Container = styled(TouchableOpacity).attrs(({ theme }) => ({}))`
-  width: 100%;
-  height: 90px;
-
-  background-color: ${({ theme }) => theme.COLORS.GRAY_500};
-
-  border-radius: 6px;
-  flex-direction: row;
-  align-items: center;
+export const Container = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.COLORS.GRAY_600};
   padding: 24px;
-  margin-bottom: 12px;
 `;
 
-export const Title = styled.Text<{ theme: Theme }>`
-  font-size: ${({ theme }) => theme.FONT_SIZE.MD};
-  color: ${({ theme }) => theme.COLORS.GRAY_200};
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+export const Content = styled.View`
+  flex: 1;
+  justify-content: center;
 `;
 
 export const Icon = styled(Entypo).attrs(({ theme }) => ({
   name: "users",
-  size: 32,
+  size: 65,
   color: theme.COLORS.GREEN_700,
 }))`
-  margin-right: 20px;
+  align-self: center;
 `;
