@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 interface Theme {
   COLORS: {
@@ -30,13 +31,9 @@ interface Theme {
   };
 }
 
-export const Container = styled.View<{ theme: Theme }>`
+export const Container = styled(SafeAreaView)`
   background-color: ${({ theme }) => theme.COLORS.GRAY_600};
   flex: 1;
   padding: 24px;
   padding-top: 55px;
-`;
-export const Text = styled.Text`
-  color: #fff;
-  font-size: 40px;
 `;

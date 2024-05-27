@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { Entypo } from "@expo/vector-icons";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 interface Theme {
   COLORS: {
@@ -31,7 +32,7 @@ interface Theme {
   };
 }
 
-export const Container = styled.View`
+export const Container = styled(SafeAreaView)`
   flex: 1;
   background-color: ${({ theme }) => theme.COLORS.GRAY_600};
   padding: 24px;
